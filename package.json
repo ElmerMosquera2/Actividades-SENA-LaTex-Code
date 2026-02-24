@@ -2,7 +2,6 @@
   "name": "actividades-sena-latex-code",
   "version": "1.0.0",
   "description": "Repositorio dedicado a la gestión y control de versiones de mis actividades académicas del SENA. El flujo de trabajo combina la edición en la nube con un respaldo y gestión local.",
-  /*"main": "index.js",*/
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -11,8 +10,8 @@
     "url": "git+https://github.com/ElmerMosquera2/Actividades-SENA-LaTex-Code.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Elmer David Mosquera Martinez",
+  "license": "MIT",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/ElmerMosquera2/Actividades-SENA-LaTex-Code/issues"
