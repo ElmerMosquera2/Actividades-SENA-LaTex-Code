@@ -1,0 +1,164 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet} % Tipografía Arial
+\usepackage{parskip}
+\usepackage{titlesec}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Configuración de márgenes ICONTEC
+\usepackage[top=4cm, bottom=3cm, left=4cm, right=2cm]{geometry}
+
+% Centrar nivel 1 (Secciones)
+\titleformat{\section}[block]{\bfseries\Large\filcenter}{\thesection}{1em}{}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    {\Large \textbf{TALLER CONCEPTOS DE TGS: EXPLORANDO LA TEORÍA GENERAL DE SISTEMAS}} \par
+    \vspace{2.5cm}
+
+    \textbf{MARIANA ANDREA ROJO HIGUITA} \par
+    \textbf{ELMER DAVID MOSQUERA MARTÍNEZ} \par
+
+    \vspace{3.5cm}
+
+    \textbf{DESARROLLO DE LA ACTIVIDAD DE APRENDIZAJE 3.3.1 (AA1)} \par
+    \vspace{2.5cm}
+
+    \textbf{INSTRUCTOR:} \\
+    \textbf{JUAN GABRIEL ALVARADO} \par
+
+    \vfill
+
+    \textbf{SERVICIO NACIONAL DE APRENDIZAJE - SENA} \\
+    \textbf{COMPLEJO TECNOLÓGICO AGROINDUSTRIAL PECUARIO Y TURÍSTICO} \\
+    \textbf{ANÁLISIS Y DESARROLLO DE SOFTWARE} \\
+    \textbf{FICHA: 3311546} \\
+    \textbf{APARTADÓ} \\
+    \textbf{2026}
+\end{titlepage}
+
+\newpage
+\pagestyle{empty}
+\tableofcontents
+\newpage
+
+\pagestyle{plain}
+\setcounter{page}{3}
+
+\section{INTRODUCCIÓN}
+Este documento presenta una exploración y conceptualización de la Teoría General de Sistemas (TGS), un marco interdisciplinario propuesto por Ludwig von Bertalanffy en la década de 1940, diseñado para comprender fenómenos complejos mediante la integración de principios comunes aplicables a sistemas biológicos, sociales, tecnológicos y mecánicos. Esta teoría resalta que los sistemas son entidades dinámicas donde las interacciones entre elementos generan propiedades emergentes, superando la visión reduccionista de partes aisladas.
+
+En este taller, se abordan conceptos clave como el holismo, el isomorfismo, las premisas básicas, las entradas, la caja negra, la homeostasis, la entropía y el modelado de sistemas, entre otros aspectos fundamentales. Se responden diversos interrogantes con el objetivo de profundizar en estos fundamentos teóricos, promover su aplicación práctica en campos como el desarrollo de software, y fomentar un análisis ético mediante el uso de citas y referencias adecuadas. Esta actividad busca integrar perspectivas de ciencias naturales y sociales, facilitando la modelación de sistemas complejos en entornos digitales y contribuyendo a la formación de profesionales capacitados.
+
+\newpage
+
+\section{Desarrollo del Cuestionario}
+
+\subsection{Significado de 'El todo es más que la suma de las partes' en la TGS}
+
+La afirmación indica que un sistema no se define únicamente por los elementos que lo componen, sino por la configuración relacional que los articula. Cuando los componentes interactúan bajo una estructura determinada, surge una propiedad emergente que no puede atribuirse a ninguno de ellos por separado. El sistema, por tanto, adquiere identidad funcional a partir del \textquotedblleft cómo\textquotedblright se organizan sus partes.
+
+\textbf{Ejemplo:} Un algoritmo de inteligencia artificial. Las líneas de código individuales no \textquotedblleft aprenden\textquotedblright. Sin embargo, cuando están estructuradas bajo un modelo matemático específico, el sistema puede reconocer patrones. La capacidad de aprendizaje no está en una línea aislada, sino en la arquitectura del conjunto.
+
+\subsection{Definición del término \textquotedblleft Isomorfismo\textquotedblright}
+
+El isomorfismo se refiere a la similitud estructural entre sistemas distintos, independientemente de su naturaleza material. Lo relevante no es de qué están hechos, sino cómo están organizados. Cuando dos sistemas comparten un mismo patrón de organización, pueden analizarse mediante el mismo esquema conceptual.
+
+\textbf{Ejemplo:} Un ecosistema digital (red social) y un ecosistema biológico. Ambos presentan nodos, flujos de información/energía, dinámicas de crecimiento y mecanismos de regulación. Aunque uno es tecnológico y el otro natural, comparten patrones organizativos comparables.
+
+\subsection{Premisas básicas de la TGS}
+
+Los sistemas no existen en aislamiento; intercambian constantemente energía, información o recursos con su entorno. Este intercambio no es opcional: es condición de existencia. La estabilidad del sistema depende de su capacidad de adaptación al ambiente.
+
+\textbf{Ejemplo:} Un mercado financiero depende continuamente de información externa (noticias, decisiones políticas, comportamiento de inversionistas). Si deja de recibir información, pierde capacidad de reacción y colapsa en su dinámica.
+
+\subsection{Las \textquotedblleft Entradas\textquotedblright en un sistema}
+
+Las entradas son los elementos que un sistema recibe del entorno y que hacen posible su funcionamiento. No son solo recursos materiales; pueden ser personas, información, energía, tiempo o incluso condiciones climáticas. Sin entradas, el sistema no opera. Con entradas inadecuadas, el sistema se desestabiliza. La calidad, cantidad y tipo de entradas condicionan directamente los resultados.
+
+\subsubsection{Ejemplo: Sistema agrícola}
+
+Una finca productora funciona como sistema agrícola abierto.
+
+Entradas principales:
+\begin{itemize}
+    \item Agua
+    \item Fertilizantes
+    \item Mano de obra
+    \item Clima
+    \item Inversión económica
+    \item Conocimiento técnico
+\end{itemize}
+
+Si el clima es extremo, el sistema se altera. Si falta agua, baja la producción. Si aumenta la inversión, puede mejorar el rendimiento. La producción depende directamente de estas entradas.
+
+\subsubsection{Ejemplo: Grupo musical}
+
+Un grupo musical también es un sistema.
+
+Entradas:
+\begin{itemize}
+    \item Ensayos previos
+    \item Instrumentos
+    \item Energía del público
+    \item Condiciones del sonido
+    \item Espacio físico
+\end{itemize}
+
+Si el sonido falla, la salida cambia. Si el público está animado, la dinámica mejora. Si no hubo ensayo, el resultado se debilita. La calidad del espectáculo depende de las entradas recibidas.
+
+\subsubsection{Ejemplo: Institución educativa}
+
+Una escuela no funciona solo con estudiantes.
+
+Entradas:
+\begin{itemize}
+    \item Docentes capacitados
+    \item Material pedagógico
+    \item Infraestructura
+    \item Apoyo familiar
+    \item Normativas educativas
+    \item Recursos financieros
+\end{itemize}
+
+Si faltan docentes preparados, baja la calidad educativa. Si no hay materiales, el aprendizaje se afecta. Si hay buena coordinación familiar, mejora el rendimiento. La formación (salida) es resultado de múltiples entradas articuladas.
+
+\subsection{El concepto de \textquotedblleft Caja Negra\textquotedblright en la TGS}
+
+En la Teoría General de Sistemas aplicada al software, el concepto de \textquotedblleft caja negra\textquotedblright describe un sistema cuyo análisis se centra en su comportamiento observable —la relación entre entradas y salidas— sin requerir conocimiento de su estructura interna o de los mecanismos específicos que ejecutan la transformación.
+
+\textbf{Ejemplo:} Una máquina que ordena y cuenta billetes puede recibir como entrada un conjunto mixto de billetes y, como salida, entregar cuatro pilas clasificadas por denominación junto con el total contabilizado. El usuario sabe que, al introducir \textquotedblleft X\textquotedblright billetes, el sistema los separará correctamente; sin embargo, desconoce si la clasificación se realiza mediante sensores ópticos, escáneres magnéticos, básculas de alta precisión o algoritmos de reconocimiento de patrones.
+
+\subsection{El concepto de \textquotedblleft Caja Blanca\textquotedblright}
+
+Representa un modelo de análisis en el que se conoce y se examina explícitamente la estructura interna del sistema, incluyendo sus componentes, reglas de funcionamiento, algoritmos y relaciones causales. A diferencia de la caja negra —que se limita a observar entradas y salidas— la caja blanca permite comprender cómo y por qué se producen los resultados, haciendo visibles los mecanismos internos que transforman las entradas en salidas.
+
+\textbf{Ejemplo:} Desde que somos niños, muchos de nosotros hemos sentido ese impulso de cacharrear con lo que cae en nuestras manos para saber qué hay detrás de la magia. Un ejemplo es cuando desarmamos una maraca para ver qué tiene: dejamos de solo escuchar el ruido y pasamos a entender que el sonido ocurre porque las semillas golpean las paredes internas.
+
+\subsection{El concepto de \textquotedblleft Homeostasis \textquotedblright}
+
+Es la capacidad de un sistema para mantener su equilibrio interno, aunque haya perturbaciones externas, esto mediante mecanismos que se auto regulan y se retroalimentan a sí mismo. Se debe aclarar que esto no implica que el sistema sea inmóvil o que permanezca sin alteraciones en su flujo, sino que mantiene estabilidad dinámica, es decir, que el sistema va ajustando continuamente sus variables internas para conservar ciertos parámetros dentro de rangos aceptables.
+
+\subsection{El concepto de \textquotedblleft Entropía \textquotedblright}
+
+La entropía es un concepto derivado del segundo principio de la termodinámica que establece que la tendencia natural y más probable de todo sistema es su progresiva desorganización. En el marco de la Teoría General de Sistemas, la entropía representa el desgaste estructural y funcional que conduce a la pérdida de orden interno, coherencia y diferenciación, hasta que el sistema tiende a homogeneizarse con su entorno. En términos sistémicos, implica disminución de energía disponible, deterioro de relaciones internas y reducción de la capacidad de respuesta organizada.
+
+\subsection{Importancia de modelar un sistema}
+
+Modelar un sistema es fundamental porque permite representarlo de manera simplificada para comprenderlo, analizarlo y mejorarlo sin intervenir directamente en la realidad, especialmente cuando se están definiendo los requisitos que deberá cumplir. En la Teoría General de Sistemas (TGS), un modelo es una representación gráfica, matemática, conceptual o digital que describe cómo funciona un sistema y cómo interactúan sus elementos. A través del modelado, los requisitos —funcionales y no funcionales— pueden organizarse, validarse y visualizarse antes de construir el sistema real.
+
+Sin mencionar tantos beneficios implicados, el modelado es un paso necesario en la planeación pues permite la observación de los requisitos y con esto se reduce la incertidumbre, y minimiza el desperdicio de recursos.
+
+\newpage
+
+\section{Conclusiones}
+
+De lo anterior se concluye que la Teoría General de Sistemas (TGS) representa un marco fundamental para analizar fenómenos complejos mediante principios comunes aplicables a sistemas biológicos, sociales, tecnológicos y mecánicos. Esta teoría subraya que los sistemas son entidades dinámicas, donde las interacciones entre elementos producen propiedades emergentes, trascendiendo enfoques reduccionistas.
+
+A través de las respuestas a los interrogantes planteados en este taller, se han explorado conceptos clave como el holismo, el isomorfismo, las premisas básicas, las entradas, la caja negra, la homeostasis, la entropía y el modelado de sistemas. Esta aproximación no solo profundiza en los fundamentos teóricos, sino que promueve su aplicación práctica en el desarrollo de software, integrando perspectivas de ciencias naturales y sociales, y fomentando un análisis ético con citas y referencias adecuadas.
+
+\end{document}
