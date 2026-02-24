@@ -4,6 +4,7 @@ Repositorio dedicado a la gestión y control de versiones de mis actividades aca
 
 ## 💻 Stack Técnico
 *   **Editor:** [Zed](https://zed.dev) (Local) / [Overleaf](https://www.overleaf.com) (Nube).
+* - **Entorno:** [Node.js](https://nodejs.org) para automatización de tareas.
 *   **Motor LaTeX:** MiKTeX (Windows) / TeX Live (Linux).
 *   **Control de Versiones:** Git (Sincronización multiplataforma).
 
@@ -11,6 +12,11 @@ Repositorio dedicado a la gestión y control de versiones de mis actividades aca
 *   `actividad-x/`: Código fuente `.tex` y recursos (imágenes/tablas).
 *   `.gitignore`: Filtro de archivos auxiliares de compilación (`.aux`, `.log`, `.out`).
 *   `LICENSE`: Licencia de uso del código.
+
+## ⚙️ Automatización (Node.js)
+El proyecto incluye scripts en package.json para agilizar procesos recurrentes
+
+(En desarrollo)
 
 ## ⚙️ Mi Configuración Local
 Para mantener la consistencia entre Windows y Linux, se utiliza la siguiente configuración de Git:
