@@ -1,0 +1,158 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{hyperref}
+
+\title{Desarrollo del Test}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Desarrollo del test}
+
+\subsection{¿Por qué necesitamos una metodología?}
+
+Lo necesitamos para una innovación, para tener ideas claras o más seguras de algún proyecto, o idea ya sea de negocios o nuestra vida cotidiana.
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Contexto histórico: Obsolescencia del code \& fix en los años 70.
+    \item Problemas sin metodología: Requerimientos ambiguos y sin normas.
+    \item Ventajas: División en etapas y definición de entradas/salidas.
+    \item Objetivo: Prolijidad, corrección y control en cada etapa.
+    \item Resultado: Aumenta las posibilidades de éxito del proyecto.
+\end{enumerate}
+\end{framed}
+
+\subsection{¿Sirve el modelo de ciclo de vida Code \& Fix?}
+
+Code \& fix, cómo tal lo dice el texto es codificar y corregir, podemos codificar nueva información para nuestra vida cotidiana, alimentarnos de mejores hábitos, tener una cálida de vids mejor, y ello nos sirve para corregir nuestros propios errores, claro está que no se podría llamar de tal forma si no también enseñanza. Estás nos quedas de enseñanza para no volver a cometer.
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Definición: Codificar y corregir sobre la marcha.
+    \item Uso adecuado: Proyectos pequeños de 1 o 2 programadores.
+    \item Uso inadecuado: Sistemas complejos o grandes.
+    \item Desventajas: Costos mayores, tiempo excesivo y calidad dudosa.
+    \item Riesgo: Pérdida de control sobre la gestión del proyecto.
+\end{enumerate}
+\end{framed}
+
+\subsection{¿Existe algún modelo de ciclo de vida que predomine?}
+
+Yo predominio una forma extrovertida, amable, amigable, sociales. Etc. Ya es que lo que más sobresale de mi persona.
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Predominio: Ningún modelo predomina sobre los otros.
+    \item Selección: Elegir el que mejor se adapte al proyecto.
+    \item Factores: Complejidad, tiempo y entregas parciales.
+    \item Comunicación: Entre equipo de desarrollo y usuario.
+    \item Consejo: La mejor metodología es la que mejor conocemos.
+\end{enumerate}
+\end{framed}
+
+\subsection{¿Seguir un modelo de ciclo de vida, nos garantiza el éxito del desarrollo?}
+
+si, si tenemos buenos hábitos, si tenemos buenos proyectos, varias indicaciones podremos llegar a tener una vida llena de éxitos, y una gran cálida de vida.
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Garantía: Ningún modelo evita todos los riesgos.
+    \item Incertidumbre: No eliminan la incertidumbre del cambio.
+    \item Éxito: No garantizan el éxito del desarrollo.
+    \item Función: Ayudan a prepararse para cambios y problemas.
+    \item Definición: El éxito se define en las etapas iniciales.
+\end{enumerate}
+\end{framed}
+
+\subsection{¿Se puede medir la incertidumbre que tenemos sobre los requerimientos iniciales?}
+
+No porque es algo mental y no podemos ver la gravedad del problema.
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Medición: Se puede medir como cantidad de información necesaria.
+    \item Baja incertidumbre: Cascada puro, Lineal, En V.
+    \item Alta incertidumbre: Espiral, Evolutivo, Prototipos.
+    \item Fuente: A menudo es el propio cliente o usuario.
+    \item Conocimiento: El usuario no sabe perfectamente las funcionalidades.
+\end{enumerate}
+\end{framed}
+
+\subsection{¿La generación de programas prototipo, es exclusiva de un solo modelo ciclo de vida?}
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item El uso de programas prototipo no es exclusivo del ciclo de vida iterativo.
+    \item En la práctica los prototipos se utilizan para validar los requerimientos de los usuarios en cualquier ciclo de vida.
+    \item Modelos que utilizan prototipos formalmente: Ciclo de Vida por Prototipos, En Espiral e Iterativo.
+    \item Se recomienda cuando no se conocen especificaciones precisas o hay innovaciones importantes.
+    \item Según el documento (página 28): "Si no se conoce exactamente cómo desarrollar un determinado producto o cuáles son las especificaciones de forma precisa, suele recurrirse a definir especificaciones iniciales para hacer un prototipo".
+\end{enumerate}
+\end{framed}
+
+\subsection{¿Podemos utilizar un lenguaje imperativo para el modelo de ciclo de vida orientado a objetos?}
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Sí se puede usar lenguaje imperativo con este modelo.
+    \item La metodología orientada a objetos es una técnica o modelo, no depende del lenguaje.
+    \item No es correcto suponer que este modelo sólo es útil con lenguajes orientados a objetos.
+    \item Es un modelo versátil aplicable a pequeños y grandes proyectos independientemente del lenguaje.
+    \item Según el documento (página 34): "Como mencionamos, es un modelo muy versátil, y por ser uno de los últimos en aparecer, aprendió mucho de los anteriores".
+\end{enumerate}
+\end{framed}
+
+\subsection{Enumere el ciclo de vida y los pasos que seguiría, si debiese desarrollar una aplicación que monitoree el estado de las redes de una empresa.}
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Etapas iniciales: Expresión de necesidades, Especificaciones, Análisis y Diseño del sistema.
+    \item Etapas finales: Implementación, Debugging, Validación y Evolución/Mantenimiento.
+    \item Modelo recomendado según documento: Ciclo de Vida Orientado a Objetos.
+    \item Justificación: Adecuado para programas de monitoreo de procesos y grandes sistemas de transacciones.
+    \item Referencia documento (páginas 18-19 y 34): Detalla las 8 etapas generales y la aplicabilidad para monitoreo.
+\end{enumerate}
+\end{framed}
+
+\subsection{Realice una lista de requerimientos hipotéticos para una aplicación que deba ejecutar archivos de música, pida la misma lista a un usuario no programador y compare las listas. ¿Qué enfoques encuentra en cada lista?}
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Objetivo de la etapa: Reflejar requerimientos y funcionalidades (qué, y no cómo, se va a implementar).
+    \item Enfoque Programador (técnico): Formatos, Codecs, Gestión de memoria, API de audio y optimización.
+    \item Enfoque Usuario no programador (funcional): Reproducir, Pausar, Volumen, Listas y facilidad de uso.
+    \item Diferencia clave: El cliente o usuario sólo impartía especificaciones muy generales del producto final.
+    \item Nota: Esta actividad es práctica y requiere trabajo externo con usuarios reales para comparar listas.
+\end{enumerate}
+\end{framed}
+
+\subsection{A modo de encuesta, pregunte a sus colegas programadores, quién y ha utilizados un ciclo de vida. Indague sobre los resultados obtenidos.}
+
+\begin{framed}
+\noindent\textbf{Modificaciones sugeridas del documento:}
+\begin{enumerate}
+    \item Esta pregunta es una actividad de investigación externa con colegas programadores.
+    \item Factores que influyen en la elección: Complejidad, Tiempo disponible y entregas parciales.
+    \item Otros factores: Comunicación entre equipo y usuario, y certeza de los requerimientos.
+    \item Resultados esperados: Diferentes programadores usan diferentes modelos según el tipo de proyecto.
+    \item Según el documento (página 20): "Un consejo: la mejor metodología, es la que mejor conocemos".
+\end{enumerate}
+\end{framed}
+
+\end{document}
