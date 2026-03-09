@@ -1,0 +1,841 @@
+\documentclass[12pt, letterpaper]{article}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{helvet} % Tipografía Arial
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{array}
+
+% Configuración de márgenes ICONTEC
+\usepackage[top=4cm, bottom=3cm, left=4cm, right=2cm]{geometry}
+
+% Centrar nivel 1 (Secciones)
+\titleformat{\section}[block]{\bfseries\Large\filcenter}{\thesection}{1em}{}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    {\Large \textbf{DISPOSITIVOS DE ENTRADA}} \par
+    \vspace{4cm}
+
+
+    \textbf{JOHAN CAMILO ARRIETA CORONADO} \par
+    \textbf{JUAN ESTEBAN GIL PANIAGUA} \par
+    \textbf{DAYANA LEMUS} \par
+    \textbf{KEINER ARCIA} \par
+    \textbf{JAIDER VALENCIA MOSQUERA} \par
+    \textbf{ELMER DAVID MOSQUERA MARTÍNEZ} \par
+
+    \vspace{3cm}
+
+    \textbf{DESARROLLO DE TRABAJO ESCRITO SOBRE DISPOCITIVOS DE ENTRADA} \par
+    \vspace{2.5cm}
+
+    \textbf{INSTRUCTOR:} \\
+    \textbf{NOMBRE DEL INTRUCTOR} \par
+
+    \vfill
+
+    \textbf{SERVICIO NACIONAL DE APRENDIZAJE - SENA} \\
+    \textbf{ANALISIS Y DESARROLLO DE SOFTWARE} \\
+    \textbf{FICHA: 3311546} \\
+    \textbf{APARTADÓ} \\
+    \textbf{2026}
+\end{titlepage}
+
+\newpage
+\setcounter{page}{2}
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+
+\section{INTRODUCCIÓN}
+
+Nosotros pensamos que los dispositivos de entrada son muy importantes porque son la forma en que las personas pueden comunicarse con el computador. Gracias a estos dispositivos podemos ingresar información, datos o instrucciones para que el sistema las procese y pueda realizar diferentes tareas.
+Por ejemplo, cuando escribimos en un teclado, movemos el mouse o usamos un micrófono, estamos utilizando dispositivos de entrada para enviar información al computador. Estos dispositivos hacen que el uso de la tecnología sea más fácil y permiten que las personas interactúen con los sistemas informáticos de una manera más sencilla.
+En esta exposición vamos a explicar qué son los dispositivos de entrada, para qué sirven y algunos ejemplos que usamos en la vida diaria, con el fin de entender mejor su importancia dentro del funcionamiento de un computador.
+
+\newpage
+%===============================================================================
+% SECCIÓN: TECLADO
+%===============================================================================
+\section{Teclado}
+
+El teclado es el dispositivo de entrada por excelencia en los sistemas informáticos. Esta sección analiza su funcionamiento interno, los diferentes tipos existentes y sus aplicaciones prácticas.
+
+%-------------------------------------------------------------------------------
+\subsection{Fundamentos del teclado como dispositivo de entrada}
+%-------------------------------------------------------------------------------
+
+\subsubsection{Definición y función principal}
+El teclado se define técnicamente como un periférico de entrada que actúa como interfaz primaria entre el usuario y la computadora. Su función principal consiste en capturar la intención del usuario (manifestada mediante la presión de una o varias teclas) y traducirla en señales eléctricas digitales que el sistema pueda interpretar y procesar. Esta función abarca:
+\begin{itemize}
+    \item \textbf{Entrada de datos alfanuméricos}: caracteres, números y símbolos.
+    \item \textbf{Ejecución de comandos}: combinaciones de teclas que ordenan acciones específicas (p.ej., \texttt{Ctrl+C}, \texttt{Alt+Tab}).
+    \item \textbf{Control del sistema}: teclas de función (F1--F12), teclas de navegación y atajos.
+\end{itemize}
+
+\subsubsection{Principio de funcionamiento: de la pulsación a la señal digital}
+Para comprender el teclado como dispositivo, es esencial conocer el proceso que ocurre desde que el usuario presiona una tecla hasta que la letra aparece en la pantalla. Este proceso es común a todos los teclados modernos, independientemente de su tipo.
+
+\paragraph{La matriz de teclas (matrix circuit)}
+Si cada tecla estuviera conectada directamente al controlador, un teclado de 104 teclas necesitaría 104 cables y 104 pines de entrada, lo cual es técnicamente inviable. Para solucionarlo, los teclados utilizan un sistema de \textbf{matriz}:
+\begin{itemize}
+    \item Las teclas se organizan en filas y columnas formando una cuadrícula.
+    \item El microcontrolador envía periódicamente una señal de exploración (\textit{scan}) a cada fila.
+    \item Al presionar una tecla, esta actúa como un interruptor que conecta físicamente una fila con una columna.
+    \item El controlador detecta qué fila y qué columna están en contacto y determina la coordenada de la tecla pulsada.
+\end{itemize}
+Por ejemplo, si el controlador está explorando la fila 3 y recibe señal en la columna 5, sabe que la tecla en esa coordenada (por ejemplo, la letra \texttt{F}) ha sido presionada.
+
+\paragraph{El scan code y el microcontrolador}
+Una vez identificada la coordenada, el microcontrolador genera un dato denominado \textbf{scan code} (código de exploración):
+\begin{itemize}
+    \item \textbf{Make code}: código que se genera cuando la tecla es presionada.
+    \item \textbf{Break code}: código que se genera cuando la tecla es liberada.
+\end{itemize}
+El microcontrolador contiene en su memoria un mapa que asigna a cada coordenada un scan code específico. No se transmite la letra \texttt{A}, sino un número hexadecimal (p.ej., \texttt{0x1C}) que el sistema operativo interpreta como la tecla \texttt{A}. Este sistema permite funciones avanzadas como la detección de teclas mantenidas (auto-repetición) y el reconocimiento de combinaciones de teclas (NKRO, \textit{N-Key Rollover}).
+
+\paragraph{Transmisión al sistema: protocolos USB, PS/2 e inalámbrico}
+El scan code generado debe ser enviado al ordenador. La forma de hacerlo depende del protocolo de comunicación:
+\begin{itemize}
+    \item \textbf{Protocolo PS/2}: Sistema bidireccional antiguo (conector circular). El microcontrolador envía el scan code directamente a través del cable. Es simple pero con limitaciones en la detección simultánea de teclas.
+    \item \textbf{Protocolo USB HID} (\textit{Human Interface Device}): Estándar actual. El teclado empaqueta la información en \textit{informes} (\textit{reports}) que contienen el estado de todas las teclas en un momento dado. El controlador USB del ordenador recibe el paquete y lo pasa al sistema operativo.
+    \item \textbf{Protocolo inalámbrico}: El microcontrolador envía los mismos paquetes de datos a un chip de radiofrecuencia (Bluetooth o RF 2.4 GHz), que los modula y transmite. El receptor conectado al ordenador demodula la señal y la inyecta en el sistema como si fuera un teclado USB convencional.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\subsection{Tipos de teclados y su arquitectura interna}
+%-------------------------------------------------------------------------------
+Una vez comprendido el funcionamiento base, se analiza cómo los diferentes tipos de teclados implementan físicamente el interruptor que cierra el circuito en la matriz.
+
+\subsubsection{Teclado de membrana}
+
+\paragraph{Componentes y mecanismo de cierre de circuito}
+El teclado de membrana es el más económico y extendido. Su construcción se basa en capas:
+\begin{itemize}
+    \item \textbf{Tres capas de plástico con circuitos impresos}: dos capas superiores contienen trazas conductoras y una capa intermedia aislante con orificios.
+    \item \textbf{Cúpulas de goma} (\textit{rubber domes}): situadas sobre las teclas, proporcionan resistencia al presionar y retorno elástico. Al presionar, la cúpula colapsa y empuja la capa superior contra la inferior, cerrando el circuito en un punto específico de la matriz.
+    \item \textbf{PCB simple}: placa de circuito impreso básica que detecta el cierre del circuito.
+\end{itemize}
+\textit{Funcionamiento}: Al presionar, la cúpula de goma conecta las dos capas conductoras, permitiendo el paso de corriente en una coordenada específica de la matriz. El microcontrolador detecta esta conexión y genera el scan code correspondiente.
+
+\paragraph{Conectividad y aplicaciones}
+\begin{itemize}
+    \item \textbf{Conectividad}: USB (actual), PS/2 (antiguo), RF 2.4 GHz o Bluetooth (versiones inalámbricas).
+    \item \textbf{Aplicaciones}: oficina, uso doméstico, equipos de bajo costo, entornos donde se valora el silencio y la economía.
+\end{itemize}
+
+\subsubsection{Teclado mecánico}
+
+\paragraph{Componentes: switches individuales, PCB y keycaps}
+El teclado mecánico es el de mayor calidad y durabilidad. Cada tecla es un mecanismo independiente:
+\begin{itemize}
+    \item \textbf{Switches individuales}: cada tecla tiene su propio interruptor mecánico. Existen tres familias principales:
+    \begin{itemize}
+        \item \textbf{Lineales}: recorrido suave y constante (ej. Cherry MX Red, ideales para \textit{gaming}).
+        \item \textbf{Táctiles}: un pequeño realce indica el punto de activación (ej. Cherry MX Brown, ideales para escritura mixta).
+        \item \textbf{Clicky}: además del realce táctil, emiten un clic audible (ej. Cherry MX Blue, ideales para mecanografía).
+    \end{itemize}
+    \item \textbf{PCB robusta}: placa de circuito impreso de calidad, a menudo con sockets intercambiables en caliente (\textit{hot-swap}) que permiten cambiar switches sin soldar.
+    \item \textbf{Keycaps intercambiables}: las teclas (usualmente de ABS o PBT) son extraíbles y personalizables.
+    \item \textbf{Estabilizadores}: mecanismos adicionales para teclas largas (Espacio, Enter, Shift) que garantizan una pulsación uniforme.
+\end{itemize}
+\textit{Funcionamiento}: Cada switch contiene internamente un mecanismo de contacto metálico. Al presionar, el vástago del switch empuja los contactos, cerrando el circuito en la PCB en la coordenada correspondiente. La sensación táctil y el sonido dependen del diseño del switch.
+
+\paragraph{Conectividad y aplicaciones}
+\begin{itemize}
+    \item \textbf{Conectividad}: USB-C (estándar moderno), Bluetooth, 2.4 GHz, PS/2 (en modelos retro).
+    \item \textbf{Aplicaciones}: \textit{gaming} competitivo (respuesta rápida), programación y escritura prolongada (comodidad táctil), entornos profesionales, comunidades de personalización (\textit{custom keyboards}).
+\end{itemize}
+
+\subsubsection{Teclado de tijera (mecanismo \textit{scissor-switch})}
+
+\paragraph{Componentes y funcionamiento del mecanismo}
+Es el tipo utilizado en portátiles y en periféricos ultrafinos (como el Magic Keyboard de Apple):
+\begin{itemize}
+    \item \textbf{Mecanismo de tijera}: un sistema de dos piezas de plástico entrelazadas que guían el movimiento vertical de la tecla, manteniéndola estable incluso con un recorrido muy corto.
+    \item \textbf{Cúpula de goma}: similar a la membrana, pero de menor tamaño, proporciona el retorno táctil.
+    \item \textbf{PCB delgada}: placa de circuito impreso extremadamente fina, a menudo integrada en el chasis.
+\end{itemize}
+\textit{Funcionamiento}: El mecanismo de tijera asegura que la tecla descienda de forma perfectamente horizontal. Al final del recorrido, la cúpula de goma colapsa y presiona un punto de contacto en la PCB, cerrando el circuito en la matriz. Ofrece una escritura precisa, silenciosa y de perfil bajo.
+
+\paragraph{Conectividad y aplicaciones}
+\begin{itemize}
+    \item \textbf{Conectividad}: integrada (bus interno en portátiles), USB-C, Bluetooth (versiones externas).
+    \item \textbf{Aplicaciones}: portátiles y ultrabooks, oficina móvil, diseño minimalista, entornos que requieren silencio.
+\end{itemize}
+
+%-------------------------------------------------------------------------------
+\subsection{Análisis comparativo y discusión}
+%-------------------------------------------------------------------------------
+\FloatBarrier
+\subsubsection{Tabla comparativa de características técnicas}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{2.5cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.2cm}>{\raggedright\arraybackslash}p{3.2cm}}
+\toprule
+\textbf{Característica} & \textbf{Teclado de membrana} & \textbf{Teclado mecánico} & \textbf{Teclado de tijera} \\
+\midrule
+Mecanismo de cierre & Cúpulas de goma + capas de membrana & Switches mecánicos individuales & Mecanismo tijera + cúpula de goma \\
+Tipo de dispositivo & Periférico económico & Periférico profesional/premium & Integrado o externo delgado \\
+Vida útil (pulsaciones) & 5--10 millones & 50--100 millones & 10--20 millones \\
+Experiencia táctil & Blando, poco definido & Personalizable (lineal/táctil/clicky) & Corto, preciso, silencioso \\
+Posibilidad de personalización & Nula o muy limitada & Alta (switches, keycaps, estabilizadores) & Baja \\
+Ruido & Bajo & Variable (según switch) & Muy bajo \\
+Peso y grosor & Medio & Alto (generalmente voluminoso) & Bajo (ultrafino) \\
+Precio relativo & Bajo & Alto & Medio \\
+\bottomrule
+\end{tabular}
+\caption{Comparativa de los principales tipos de teclados}
+\label{tab:comparativa}
+\end{table}
+
+\FloatBarrier
+\subsubsection{Casos de uso específicos según la tecnología}
+
+\begin{table}[h!]
+\centering
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{3.8cm}>{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}p{5.5cm}}
+\toprule
+\textbf{Caso de uso} & \textbf{Tipo recomendado} & \textbf{Justificación técnica} \\
+\midrule
+Oficina / Administrativo & Membrana o tijera & Económicos, silenciosos, suficiente durabilidad \\
+\textit{Gaming} competitivo & Mecánico (switches lineales) & Respuesta rápida, sin fatiga, durabilidad extrema, anti-ghosting/NKRO \\
+Programación / Escritura intensiva & Mecánico (switches táctiles) & Retroalimentación táctil que reduce errores, comodidad en jornadas largas \\
+Portátil / Movilidad & Tijera & Perfil bajo, ligereza, integración en el chasis \\
+Entornos silenciosos (bibliotecas) & Membrana o tijera & Ausencia de clics mecánicos \\
+Personalización avanzada & Mecánico \textit{hot-swap} & Permite cambiar switches sin soldar y keycaps libremente \\
+Producción masiva / Equipos económicos & Membrana & Coste de fabricación muy bajo \\
+\bottomrule
+\end{tabular}
+\caption{Casos de uso recomendados según el tipo de teclado}
+\label{tab:usos}
+\end{table}
+
+\FloatBarrier
+%-------------------------------------------------------------------------------
+\subsection{Conclusiones de la sección}
+%-------------------------------------------------------------------------------
+El análisis presentado permite extraer las siguientes conclusiones:
+\begin{itemize}
+    \item \textbf{El teclado es un sistema embebido complejo}: funciona como un pequeño ordenador que integra una matriz de contactos, un microcontrolador con firmware y un protocolo de comunicación estandarizado para convertir la acción mecánica en datos digitales.
+    \item \textbf{El principio de funcionamiento es universal}: todos los teclados modernos comparten la lógica de exploración por matrices, generación de \textit{scan codes} y transmisión por protocolos HID. Las diferencias residen en la implementación física del interruptor.
+    \item \textbf{Cada tipo responde a necesidades diferentes}: la membrana prioriza economía y silencio; el mecánico, durabilidad y precisión; el tijera, delgadez y portabilidad.
+    \item \textbf{La elección debe ser contextual}: no existe un "mejor teclado" absoluto; la selección depende del caso de uso específico (gaming, oficina, programación, movilidad, etc.).
+\end{itemize}
+En definitiva, comprender el teclado como dispositivo implica reconocer la combinación de electrónica inteligente y mecánica cuidadosamente diseñada para hacer transparente la interacción hombre-máquina.
+
+\newpage
+\section{ESCÁNER}
+
+\begin{figure}[h]
+    \centering
+    \caption{ESCANER}
+    \includegraphics[width=0.4\linewidth]{assets/images/scaner.jpg}
+    \label{fig:scaner}
+\end{figure}
+
+\FloatBarrier
+
+\subsection{Definición}
+
+El \textbf{escáner} es un dispositivo de entrada que permite \textbf{Convertir documentos físicos en archivos digitales} que se pueden guardar en una computadora.
+
+Esto significa que documentos como \textbf{hojas de papel, fotografías, dibujos o libros} pueden transformarse en imágenes digitales o archivos PDF.
+
+Actualmente los escáneres se utilizan mucho en \textbf{oficinas, empresas, bibliotecas, universidades y hogares} para digitalizar información y organizar documentos.
+
+\subsection{Funcionamiento del escáner}
+
+El funcionamiento de un escáner se basa en \textbf{capturar una imagen del documento utilizando luz y sensores}.
+
+El proceso funciona de la siguiente manera:
+
+\begin{enumerate}
+
+\item  Primero se coloca el documento sobre el vidrio del escáner.
+\item  Luego una \textbf{barra de luz se mueve por debajo del documento} para iluminarlo.
+\item  Los \textbf{sensores del escáner detectan la luz reflejada} del documento.
+\item  Esa información se convierte en datos digitales.
+\item  Finalmente el archivo se guarda en la computadora como \textbf{imagen, PDF u otro formato digital}.
+
+\end{enumerate}
+
+Este proceso ocurre en pocos segundos y permite obtener una \textbf{copia digital muy similar al documento original}.
+
+\subsection{Tipos de escáner}
+
+Existen diferentes tipos de escáner dependiendo del uso que se les quiera dar.
+
+\subsubsection{Escáner plano (Flatbed)}
+
+Es el más común y el que normalmente encontramos en casas y oficinas.
+Tiene una tapa y un vidrio donde se coloca el documento para escanearlo.
+
+\subsubsection{Escáner de alimentación de hojas}
+
+Este tipo de escáner permite \textbf{escanear muchas hojas automáticamente}, ya que las hojas pasan por el escáner como si fuera una impresora.
+
+\subsubsection{Escáner portátil}
+
+Es pequeño y fácil de transportar.
+Se usa cuando se necesita escanear documentos rápidamente o fuera de una oficina.
+
+
+\subsubsection{Escáner de tambor}
+
+Es un escáner profesional que ofrece \textbf{una calidad de imagen extremadamente alta} y se utiliza en trabajos de diseño o impresión profesional.
+
+\subsection{Sensores CCD vs CIS}
+
+Los escáneres utilizan sensores para capturar la imagen del documento.
+
+\begin{figure}[h]
+    \centering
+    \caption{CDD y CIS}
+    \includegraphics[width=0.4\linewidth]{assets/images/CDD-y-CIS.jpg}
+    \label{fig:CDD-y-CIS}
+\end{figure}
+
+\FloatBarrier
+
+\subsubsection{Sensor CCD}
+
+El sensor CCD ofrece \textbf{mayor calidad de imagen}, captura mejor los colores y los detalles.
+Por esta razón se utiliza principalmente en escáneres profesionales.
+
+\subsubsection{Sensor CIS}
+
+El sensor CIS es más \textbf{económico, pequeño y consume menos energía}.
+Por eso se utiliza en escáneres domésticos o más simples.
+
+En general, los sensores \textbf{CCD son mejores en calidad}, mientras que los \textbf{CIS son más económicos y compactos}.
+
+\subsection{Características técnicas}
+
+Cuando se habla de escáneres existen algunas características importantes que determinan su calidad y rendimiento.
+
+\subsubsection{Resolución (DPI)}
+
+La resolución indica e\textbf{l nivel de detalle que tendrá la imagen escaneada}.
+Cuanto mayor sea el DPI, más clara y detallada será la imagen.
+
+\subsubsection{Velocidad de escaneo}
+
+Es el tiempo que tarda el escáner en digitalizar un documento.
+
+\subsubsection{Profundidad de color}
+
+Se refiere a\textbf{ la cantidad de colores que el escáner puede capturar}, lo cual influye en la calidad de las imágenes.
+
+\subsubsection{Conectividad}
+
+Los escáneres pueden conectarse a la computadora mediante \textbf{USB, WiFi o red}.
+
+\subsection{OCR (Reconocimiento Óptico de Caracteres)}
+
+El \textbf{OCR} es una tecnología que permite \textbf{reconocer el texto dentro de una imagen escaneada}.
+
+Esto significa que si escaneamos una hoja con texto, el sistema puede \textbf{identificar las letras y convertirlas en texto editable}.
+
+\begin{figure}[h]
+    \centering
+    \caption{OCR}
+    \includegraphics[width=0.4\linewidth]{assets/images/OCR.png}
+    \label{fig:ocr}
+\end{figure}
+
+\FloatBarrier
+
+
+\textbf{Por ejemplo:}
+
+Un documento escaneado puede convertirse en texto que luego se puede \textbf{editar en programas como Word}.
+
+Esto es muy útil para \textbf{digitalizar libros, documentos antiguos o archivos importantes}.
+
+\subsection{Ventajas y limitaciones}
+
+\begin{itemize}
+
+\item Permite guardar documentos en formato digital.
+\item Facilita compartir archivos por internet.
+\item Reduce el uso de papel.
+\item Permite organizar mejor la información.
+\item Con OCR se pueden editar documentos escaneados.
+
+\end{itemize}
+
+\subsection{Limitaciones}
+
+\begin{itemize}
+
+\item Algunos escáneres pueden ser costosos.
+\item Escanear muchos documentos puede tomar tiempo.
+\item Los archivos digitales pueden ocupar espacio en la computadora.
+
+\end{itemize}
+
+\newpage
+\section{EL MICRÓFONO COMO DISPOSITIVO DE ENTRADA}
+
+\subsection{1. ¿Qué es un dispositivo de entrada?}
+
+Un dispositivo de entrada es un periférico que permite introducir datos o información a un sistema informático.
+Convierte señales físicas como sonido, luz o movimiento en señales eléctricas o digitales que el computador puede procesar.
+
+El micrófono es un dispositivo de entrada porque transforma ondas sonoras en señales eléctricas que pueden ser interpretadas,
+almacenadas o transmitidas por un sistema digital.
+
+\subsection{2. ¿Qué es un micrófono?}
+
+Un micrófono es un transductor electroacústico que convierte la energía acústica (sonido) en energía eléctrica.
+
+Recibe vibraciones del aire, las transforma en señales eléctricas y estas pueden amplificarse, digitalizarse y procesarse
+por un sistema informático.
+
+Permite grabación de voz, videollamadas, reconocimiento de voz, streaming y control por comandos de voz.
+
+\subsection{3. Principio de funcionamiento}
+
+Paso 1: Las ondas sonoras golpean el diafragma del micrófono.
+
+Paso 2: El diafragma vibra según la frecuencia e intensidad del sonido.
+
+Paso 3: Se genera una señal eléctrica analógica.
+
+Paso 4: La tarjeta de sonido convierte la señal en datos digitales.
+
+\subsection{4. Tipos de micrófonos}
+
+Micrófono dinámico: Usa bobina e imán. Es resistente y no necesita alimentación externa.
+
+Micrófono de condensador: Requiere alimentación phantom power. Es más sensible y usado en estudios.
+
+Micrófono electret: Pequeño y común en laptops y celulares.
+
+Micrófono USB: Incluye conversor digital interno y conexión directa al computador.
+
+\subsection{5. El micrófono como interfaz humano-computador}
+
+Permite interacción por voz con asistentes virtuales, sistemas de dictado y accesibilidad.
+
+Es fundamental en el desarrollo del reconocimiento del habla y la inteligencia artificial.
+
+\subsection{6. Parámetros técnicos importantes}
+
+Frecuencia de respuesta: Rango de sonidos que puede captar.
+
+Sensibilidad: Nivel mínimo de sonido detectable.
+
+Impedancia: Resistencia eléctrica interna.
+
+Relación señal/ruido: Cantidad de señal útil frente al ruido.
+
+\subsection{7. Aplicaciones en informática}
+
+Videoconferencias, streaming, grabación musical, sistemas de seguridad, reconocimiento biométrico
+y videojuegos online con comunicación en tiempo real.
+
+\subsection{8. Conversión Analógica-Digital}
+
+El micrófono produce señal analógica.
+
+La tarjeta de sonido realiza muestreo y cuantificación para convertirla en datos digitales.
+
+Frecuencias comunes: 44.1 kHz y 48 kHz.
+
+\subsection{9. Ventajas}
+
+Permite comunicación natural.
+
+Facilita interacción manos libres.
+
+Es útil para accesibilidad y asistentes virtuales.
+
+\subsection{10. Desventajas}
+
+Sensible al ruido ambiental.
+
+Puede presentar latencia.
+
+Puede captar interferencias.
+
+\subsection{11. Problemas técnicos comunes}
+
+Ruido de fondo.
+
+Distorsión.
+
+Saturación (clipping).
+
+Retrasos en transmisión.
+
+\subsection{12. Futuro de los micrófonos}
+
+Cancelación de ruido con inteligencia artificial.
+
+Reconocimiento de emociones.
+
+Micrófonos direccionales inteligentes.
+
+Integración con realidad virtual y aumentada.
+
+\subsection{Conclusión}
+
+El micrófono es un dispositivo de entrada fundamental en los sistemas informáticos modernos.
+Convierte sonido en información digital, permitiendo avances en comunicación, entretenimiento,
+inteligencia artificial y accesibilidad.
+
+\newpage
+\section{HISTORIA Y CARACTERÍSTICAS DE LA CÁMARA WEB}
+
+\subsection{1. Historia de la cámara web}
+
+\textbf{Imágenes de referencia:}
+
+\begin{figure}[h]
+    \centering
+    \caption{webcam 1}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_1.jpg}
+    \label{fig:webcam-01}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+        \caption{webcam 2}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_2.jpg}
+    \label{fig:webcam-02}
+\end{figure}
+
+
+\begin{figure}[h]
+    \centering
+    \caption{webcam 3}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_3.jpg}
+    \label{fig:webcam-03}
+\end{figure}
+
+\FloatBarrier
+
+La \textbf{cámara web} (webcam) es un dispositivo que permite capturar imágenes o video y transmitirlos en tiempo real a través de una computadora o internet.
+
+\subsubsection*{Origen}
+\begin{itemize}
+  \item La primera cámara web fue creada en \textbf{1991 en la Universidad de Cambridge (Inglaterra)}.
+  \item Su objetivo era vigilar una \textbf{cafetera} para saber si aún quedaba café sin ir hasta la sala.
+  \item Las imágenes se transmitían en la red interna de la universidad.
+\end{itemize}
+
+\subsubsection*{Evolución}
+\begin{itemize}
+  \item \textbf{Década de 1990:} aparecen las primeras webcams comerciales conectadas por USB.
+  \item \textbf{Años 2000:} se popularizan con los chats y las videollamadas.
+  \item \textbf{Actualidad:} muchas laptops incluyen cámaras web con alta resolución.
+\end{itemize}
+
+\subsection{2. ¿Qué son las cámaras web?}
+
+Una \textbf{cámara web} es un \textbf{dispositivo de entrada} que captura imágenes o video y los envía a una computadora para transmitirlos en internet o almacenarlos.
+
+\subsubsection*{Características principales}
+\begin{itemize}
+  \item Captura \textbf{video en tiempo real}
+  \item Se conecta por \textbf{USB o viene integrada}
+  \item Permite \textbf{videollamadas, streaming y grabación}
+  \item Algunas incluyen \textbf{micrófono}
+  \item Funcionan con aplicaciones como Zoom, Meet o Teams
+\end{itemize}
+
+\subsection{3. Tipos de cámaras web}
+
+\textbf{Imágenes de referencia:}
+
+\begin{figure}[h]
+    \centering
+    \caption{61paPKcPbxL.jpg}
+    \includegraphics[width=0.4\linewidth]{assets/images/Tipos_de_webcam.jpg}
+    \label{fig:Tipos-de-webcam}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Webcam Externa}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_externa.jpg}
+    \label{fig:Webcam-externa}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Webcam Profesional}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_profesional.jpg}
+    \label{fig:Webcam-profesional}
+\end{figure}
+
+\FloatBarrier
+
+\subsubsection*{Webcam integrada}
+\begin{itemize}
+  \item Viene dentro de \textbf{laptops, tablets o monitores}
+  \item No necesita instalación
+\end{itemize}
+
+\subsubsection*{Webcam externa}
+\begin{itemize}
+  \item Se conecta mediante \textbf{USB}
+  \item Permite mejor posicionamiento
+\end{itemize}
+
+\subsubsection*{Webcam profesional}
+\begin{itemize}
+  \item Usada para \textbf{streaming y creación de contenido}
+  \item Mayor resolución y mejor calidad
+\end{itemize}
+
+\subsubsection*{Webcam PTZ}
+\begin{itemize}
+  \item Permite \textbf{mover la cámara y hacer zoom}
+  \item Usada en conferencias o vigilancia
+\end{itemize}
+
+\subsection{4. Resoluciones de las cámaras web}
+
+La \textbf{resolución} indica la cantidad de píxeles que tiene la imagen.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{lll}
+\toprule
+\textbf{Resolución} & \textbf{Calidad} & \textbf{Uso} \\
+\midrule
+480p & Baja & Videollamadas antiguas \\
+720p (HD) & Media & Videollamadas básicas \\
+1080p (Full HD) & Alta & Streaming y reuniones \\
+2K & Muy alta & Creadores de contenido \\
+4K & Profesional & Video de alta calidad \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{5. ¿Por qué son importantes los FPS?}
+
+\textbf{FPS (Frames Per Second)} significa \textbf{fotogramas por segundo}.
+
+Indica cuántas imágenes se muestran en un segundo de video.
+
+\begin{table}[h]
+\centering
+\begin{tabular}{ll}
+\toprule
+\textbf{FPS} & \textbf{Resultado} \\
+\midrule
+15 FPS & Video entrecortado \\
+30 FPS & Fluido \\
+60 FPS & Muy fluido \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+Mientras más FPS tenga la cámara:
+\begin{itemize}
+  \item El movimiento se ve más natural
+  \item El video es más fluido
+  \item Mejora la calidad del streaming
+\end{itemize}
+
+\subsection{6. Uso de las cámaras web en la vida cotidiana}
+
+\textbf{Imágenes de referencia:}
+
+\begin{figure}[h]
+    \centering
+    \caption{Videollamada}
+    \includegraphics[width=0.4\linewidth]{assets/images/Videollamada.jpg}
+    \label{fig:Videollamada}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Streaming}
+    \includegraphics[width=0.4\linewidth]{assets/images/Tipos_de_webcam.jpg}
+    \label{fig:Streaming}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \caption{Webcam 4}
+    \includegraphics[width=0.4\linewidth]{assets/images/Webcam_4.jpg}
+    \label{fig:webcam-04}
+\end{figure}
+
+\FloatBarrier
+
+\subsubsection*{Videollamadas}
+\begin{itemize}
+  \item Reuniones de trabajo
+  \item Clases virtuales
+  \item Comunicación con familiares
+\end{itemize}
+
+\subsubsection*{Streaming}
+\begin{itemize}
+  \item Creadores de contenido
+  \item Gamers
+\end{itemize}
+
+\subsubsection*{Educación}
+\begin{itemize}
+  \item Clases virtuales
+  \item Tutorías en línea
+\end{itemize}
+
+\subsubsection*{Seguridad}
+\begin{itemize}
+  \item Vigilancia de casas u oficinas
+\end{itemize}
+
+\subsubsection*{Fotografía y grabación}
+\begin{itemize}
+  \item Tomar fotos o videos desde el computador
+\end{itemize}
+
+\subsection{Conclusión}
+
+Las \textbf{cámaras web} son dispositivos de entrada muy importantes en la actualidad.
+Permiten la comunicación en tiempo real, el aprendizaje en línea y la creación de contenido digital.
+
+Gracias a la evolución de la tecnología, hoy existen cámaras con \textbf{alta resolución y mayor fluidez de video}, lo que mejora la experiencia en videollamadas, streaming y educación virtual.
+
+\newpage
+\section{CONTROLES Y MANDOS DE VIDEOJUEGOS COMO DISPOSITIVO DE ENTRADA}
+
+\subsection{Introducción}
+
+Los mandos y controles de videojuegos constituyen uno de los dispositivos de entrada más importantes en la interacción entre el ser humano y los sistemas informáticos dedicados al entretenimiento digital. Estos dispositivos permiten al usuario enviar comandos a una consola, computadora o dispositivo móvil para controlar acciones dentro de un videojuego o aplicación interactiva.
+
+Con el paso de los años, los controles han evolucionado desde simples palancas mecánicas hasta complejos dispositivos electrónicos que incluyen sensores de movimiento, retroalimentación háptica, conectividad inalámbrica y tecnologías de precisión avanzada. Actualmente no solo se utilizan para videojuegos, sino también en simuladores, sistemas de realidad virtual, aplicaciones educativas, robótica y pruebas de interacción humano-computadora.
+
+\subsection{¿Qué es un mando de videojuegos?}
+
+Un mando de videojuegos es un dispositivo de entrada que permite a un usuario interactuar con un sistema digital, generalmente una consola de videojuegos o una computadora. A través de botones, joysticks, gatillos y sensores, el jugador puede controlar personajes, vehículos u otros elementos dentro del entorno virtual.
+
+Los controles funcionan enviando señales eléctricas o digitales al sistema que interpreta dichas señales como instrucciones. Desde el punto de vista de la informática, los controles forman parte de los dispositivos de interfaz humano-computadora (HCI).
+
+\subsection{Tipos de mandos de videojuegos}
+
+\begin{enumerate}
+\item Controles tradicionales de consola
+
+Incluyen joysticks analógicos, botones frontales y gatillos.
+
+\item Controles Arcade
+
+Diseñados para juegos de pelea o recreativas.
+
+\item Controles de movimiento
+
+Utilizan sensores para detectar movimiento del jugador.
+
+\item Controles especializados
+
+Volantes de conducción, joysticks de vuelo y controles de realidad virtual.
+\end{enumerate}
+
+\subsection{Componentes principales}
+
+\begin{itemize}
+\item Botones digitales
+\item Joysticks analógicos
+\item Gatillos
+\item D-Pad o cruceta
+\item Motores de vibración
+\item Sensores de movimiento
+\item Batería
+\item Circuitos electrónicos internos
+\end{itemize}
+
+\subsection{Evolución histórica}
+
+1970-1980: primeros controles arcade.
+
+1980-1990: aparición de la cruceta direccional.
+
+1990-2000: introducción del joystick analógico.
+
+2000-2010: controles inalámbricos y sensores de movimiento.
+
+2010-Actualidad: retroalimentación háptica y tecnología avanzada.
+
+\subsection{Ventajas}
+
+\begin{itemize}
+\item Mayor precisión en videojuegos.
+\item Experiencia más inmersiva.
+\item Ergonomía para largas sesiones de juego.
+\item Compatibilidad con múltiples plataformas.
+\end{itemize}
+
+\subsection{Desventajas}
+
+\begin{itemize}
+\item Costo elevado en algunos modelos.
+\item Desgaste con el tiempo.
+\item Dependencia de batería.
+\item Problemas de compatibilidad en ciertos sistemas.
+\end{itemize}
+
+\subsection{Problemas técnicos comunes}
+
+\begin{itemize}
+\item Drift del joystick.
+\item Botones que dejan de funcionar.
+\item Problemas de conexión inalámbrica.
+\item Fallas en la batería.
+\end{itemize}
+
+\subsection{Tecnologías utilizadas}
+
+\begin{itemize}
+\item Bluetooth
+\item Sensores giroscópicos
+\item Retroalimentación háptica
+\item Gatillos adaptativos
+\item Sensores de presión
+\end{itemize}
+
+\subsection{Aplicaciones en informática}
+
+\begin{itemize}
+\item Simuladores de vuelo y conducción
+\item Realidad virtual
+\item Robótica
+\item Investigación en interacción humano-computadora
+\item Aplicaciones educativas
+\end{itemize}
+
+\newpage
+\section{CONCLUCION}
+
+En conclusión, nosotros pensamos que los dispositivos de entrada son una parte muy importante de los computadores, porque gracias a ellos podemos introducir información, datos e instrucciones para que el sistema los procese. Sin estos dispositivos sería muy difícil interactuar con un computador o realizar tareas básicas como escribir, buscar información o dar órdenes.
+Además, los dispositivos de entrada permiten que exista una comunicación entre el usuario y la computadora, haciendo que el uso de la tecnología sea más fácil y eficiente. Por ejemplo, el teclado, el mouse, el micrófono o el escáner nos ayudan a ingresar diferentes tipos de información al sistema.
+Por eso, como grupo consideramos que es importante conocer qué son y cómo funcionan los dispositivos de entrada, ya que son fundamentales para el funcionamiento de los sistemas informáticos que utilizamos en nuestra vida diaria
+
+
+\end{document}
